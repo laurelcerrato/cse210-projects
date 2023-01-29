@@ -6,7 +6,6 @@ class Program
     {   
         Console.WriteLine("Welcome to the Journal Program!");    
         Journal journal = new Journal();
-        journal._featureSelection = "0";
         Entries entry = new Entries();
         Files file = new Files();
         while (journal._featureSelection != "5"){
@@ -14,6 +13,7 @@ class Program
             journal._featureSelection = Console.ReadLine();
 
             if (journal._featureSelection == "1"){
+            journal._writinginTheJournal += 1;
             PrompGenerator prompt = new PrompGenerator();
             string randomPrompt = prompt.QuestionPrompt();
             Console.WriteLine(randomPrompt);
@@ -42,6 +42,7 @@ class Program
                 file.SaveFile();
 
             }else if (journal._featureSelection == "5"){
+                Console.WriteLine($"Today you wrote {journal._writinginTheJournal} answers for our prompts, Well Done!");
                 Console.WriteLine("Thank you for using this Journal!");
             }
         }
