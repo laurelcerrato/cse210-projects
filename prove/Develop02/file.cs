@@ -1,37 +1,28 @@
 using System.IO;
-public class files{
+public class files
+{
     public string _filename;
+    public string _userfile;
+    public List<string> Entry = new List<string>();
 
     public void SaveFile()
     {
-        string fileName = _filename;
-        using (StreamWriter outputFile = new StreamWriter(fileName))
+        using (StreamWriter outputFile = new StreamWriter(_filename))
         {
-            outputFile.WriteLine("");
-        }
+            foreach (string entry in Entry)
+            {
+                outputFile.WriteLine(entry);
+            }
 
-
-    }
+    }}
     public void LoadFile()
     {
-        string fileName = _filename;
-        string[] lines = System.IO.File.ReadAllLines(_filename);
+        string fileName = _userfile;
+        string[] lines = System.IO.File.ReadAllLines(fileName);
         foreach (string line in lines)
         {
-            string[] parts = line.Split(",");
-
-            string date = parts[0];
-            string prompt = parts[1];
-            string entry = parts[2];
+            Console.WriteLine(line);
             }
     }
 
-    public void CreateFileName()
-    {
-        string fileName = _filename;
-        using (StreamWriter outputFile = new StreamWriter(fileName))
-        {
-            outputFile.WriteLine("");
-        }
     }
-}
