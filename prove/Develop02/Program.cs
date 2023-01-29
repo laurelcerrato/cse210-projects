@@ -8,7 +8,7 @@ class Program
         Journal journal = new Journal();
         journal._featureSelection = "0";
         Entries entry = new Entries();
-        files file = new files();
+        Files file = new Files();
         while (journal._featureSelection != "5"){
             journal.Display();
             journal._featureSelection = Console.ReadLine();

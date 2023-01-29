@@ -1,5 +1,5 @@
 using System.IO;
-public class files
+public class Files
 {
     public string _filename;
     public string _userfile;
@@ -9,10 +9,7 @@ public class files
     {
         using (StreamWriter outputFile = new StreamWriter(_filename))
         {
-            foreach (string entry in Entry)
-            {
-                outputFile.WriteLine(entry);
-            }
+            outputFile.WriteLine($"Date: {Entry[0]}\nQuestion: {Entry[1]}\nAnswer: {Entry[2]}");
 
     }}
     public void LoadFile()
