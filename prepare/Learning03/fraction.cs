@@ -20,14 +20,14 @@ public class Fraction
         _top = top;
         _bottom = bottom;
     }
-    public string GetFractionString( int _top, int _bottom)
+    public string GetFractionString()
     {
         string text = $"{_top}/{_bottom}";
         return text;
     }
-    public double GetDEecimalValue( int _top, int _bottom)
+    public double GetDEecimalValue()
     {
         double division = _top/_bottom;
-        return division;
+        return (double) _top/(double) _bottom;
     }
 }
