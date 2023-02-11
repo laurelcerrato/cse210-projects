@@ -31,6 +31,7 @@ class Program
 
             } else if (journal._featureSelection == "2"){
                 entry.JournalEntry();
+                
             }else if (journal._featureSelection == "3"){
                 Console.WriteLine("What is yout file name? Example: filename.txt ");
                 file._userfile = Console.ReadLine();
