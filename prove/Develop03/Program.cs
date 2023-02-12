@@ -15,7 +15,10 @@ class Program
             answer = Console.ReadLine();
             Console.Clear();
             scrip.RenderedText();
-            scrip.extractWord();
+            scrip.extractWordFromScrip();
+            Word w =new Word();
+                w.returnedword();
+            
         //     scrip.HiddenWord();
         // }
         

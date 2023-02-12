@@ -7,19 +7,20 @@ public class Word
 
     }
     public Word(string word){
-        _word = word;
+        Scripture exword = new Scripture();
+        _word = exword.extractWordFromScrip();
     }
     public string  returnedword(){
-        hide();
+        hide(_word);
         return _convertedWord;
 
     }
     // public string GetWord(string word){
     //     _word = returnedword(word)
     // }
-    public void hide(){
+    public void hide(string word){
 
-            foreach(char letter in _word){
+            foreach(char letter in word){
                 string stringedlet = Char.ToString(letter);
                 string replacement = "_";
                 char converted = char.Parse(replacement);
@@ -28,11 +29,9 @@ public class Word
             }
 
     }
-    public void setWord(){
-        Scripture word = new Scripture();
-        _word = word.extractWord();
-        Console.WriteLine(_word);
-
-
-    }
+    // public void setWord(){
+    //     Scripture word = new Scripture();
+    //     _word = word.extractWordFromScrip();
+    //     Console.WriteLine(_word);
+    // }
 }

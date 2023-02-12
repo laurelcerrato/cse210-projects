@@ -5,7 +5,7 @@ public class Reference
     private int _chapter = 3;
     private int _startverse = 5;
     private int _endverse = 6;
-    private string _finalReference;
+    // private string _finalReference;
     public Reference(){
 
     }
