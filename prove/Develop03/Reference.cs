@@ -5,6 +5,7 @@ public class Reference
     private int _chapter = 3;
     private int _startverse = 5;
     private int _endverse = 6;
+    public string _finalReference;
     public Reference(){
 
     }
@@ -12,17 +13,21 @@ public class Reference
     {
         chapter = _chapter;
         verse = _startverse;
-        Console.Write($"{_book} {chapter}:{verse}");
 
     }
-    private Reference(int chapter, int verse, int endverse)
+    public Reference(int chapter, int verse, int endverse)
     {
         chapter = _chapter;
         verse = _startverse;
         endverse = _endverse;
-        Console.Write($"{_book} {chapter}:{verse}-{endverse}");
     }
-    public void returnedReference(){
-        Reference reference = new Reference(_chapter, _startverse, _endverse);
+    public string GetMultVReference(){
+        string reference = $"{_book} {_chapter}:{_startverse}-{_endverse}";
+        return reference;
     }
+    public string GetoneVReference(){
+        string onevreference = $"{_book} {_chapter}:{_startverse}";
+        return onevreference;
+    }
+    
 }
