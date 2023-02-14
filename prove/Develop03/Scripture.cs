@@ -8,7 +8,6 @@ public class Scripture
     public Scripture(){
 
     }
-    Random r = new Random();
     public Scripture(string scripture )
     {
         // string[] splittedscrip = scripture.Split(" ");
@@ -26,28 +25,33 @@ public class Scripture
         //     Console.WriteLine(word);
         // }
         // }
-        public string extractWordFromScrip(){
+        public int extractIndexFromScrip(){
         Scripture scrip = new Scripture(_scripture);
-        string exword = scrip._wordList[r.Next(scrip._wordList.Length)];
+        Random r = new Random();
         int index = r.Next(scrip._wordList.Length);
-        Word changword = new Word();            
-        string rword = changword.returnedword();
-        _wordList[index] = rword;
-        return exword;
+        return index;
     }
-    // public void HidenWord(){
+    public void HideWord(){
+        Word newword =new Word();
+        Scripture scrip = new Scripture(_scripture);
+        int word1 = extractIndexFromScrip();
+        int word2 = extractIndexFromScrip();
+        string firstword = scrip._wordList[word1];
+        string converted = scrip._wordList[word1] = newword.hide(firstword);
+        string secword = scrip._wordList[word2];
+        string secconverted = scrip._wordList[word2] = newword.hide(secword);
+        Console.WriteLine(string.Join(' ', scrip._wordList));
+        // word1.ToString();
+        // string converted = newword.hide(word1);
+        // newword.hide(word1);
+        // word1 = 
+    }
+    // public void RenderedText(){
     //     Scripture scrip = new Scripture(_scripture);
-    //     int index = r.Next(scrip._wordList.Length);
-    //     string eword = extractWordFromScrip();
-    //     Word changword = new Word();            
-    //     string rword = changword.returnedword();
-    //     _wordList[index] = rword;
+    //     scrip.HideWord();
+    //     Console.WriteLine($"{_reference} {_wordList}.");
+    //     Console.WriteLine("Press enter to continue or type quit to finish");
     // }
-    public void RenderedText(){
-        string finalscrip = string.Join(",",_wordList);
-        Console.WriteLine($"{_reference} {finalscrip}.");
-        Console.WriteLine("Press enter to continue or type quit to finish");
-    }
     public void SetfinalRefer(string reference){
         _reference = reference;
             }

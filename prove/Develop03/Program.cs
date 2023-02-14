@@ -10,14 +10,14 @@ class Program
             string refer = reference.GetMultVReference();
             Scripture scrip =new Scripture();
             scrip.SetfinalRefer(refer);
-            scrip.RenderedText();
+            // scrip.RenderedText();
         while(answer != "quit"){
             answer = Console.ReadLine();
             Console.Clear();
-            scrip.RenderedText();
-            scrip.extractWordFromScrip();
-            Word w =new Word();
-                w.returnedword();
+            scrip.HideWord();
+            // scrip.RenderedText();
+            // Word w =new Word();
+            //     w.setWord();
             
         //     scrip.HiddenWord();
         // }
@@ -25,3 +25,4 @@ class Program
     }
     
 }}
+
