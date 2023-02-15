@@ -3,56 +3,47 @@ public class Scripture
 {  
     private string _scripture = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life";
     private string _reference;
-    private string[] _wordList;
-    // public List<string> _wordList= new List<string>();
+    public List<string> _wordList= new List<string>();
     public Scripture(){
 
     }
     public Scripture(string scripture )
-    {
-        // string[] splittedscrip = scripture.Split(" ");
-        _wordList = scripture.Split(' ');
+    {   
+        string[] array = scripture.Split(' ');
+        foreach(string word in array){
+            _wordList.Add(new Word (word).ToString());
+        }
     }
-        // foreach (string stringInArray in _splittedStringArray) {
-        //     _word.Add(stringInArray);
-        //     foreach(string w in _word){
-        //         Console.WriteLine(w);
-        //     }
-        // }
-        // foreach (var words in splittedscrip) {
-        // _word.Add(words);
-        // foreach(var word in splittedscrip){
-        //     Console.WriteLine(word);
-        // }
-        // }
         public int extractIndexFromScrip(){
-        Scripture scrip = new Scripture(_scripture);
         Random r = new Random();
-        int index = r.Next(scrip._wordList.Length);
+        Scripture scrip = new Scripture(_scripture);
+        int index = r.Next(scrip._wordList.Count());
         return index;
     }
     public void HideWord(){
-        Word newword =new Word();
-        Scripture scrip = new Scripture(_scripture);
-        int word1 = extractIndexFromScrip();
-        int word2 = extractIndexFromScrip();
-        string firstword = scrip._wordList[word1];
-        string converted = scrip._wordList[word1] = newword.hide(firstword);
-        string secword = scrip._wordList[word2];
-        string secconverted = scrip._wordList[word2] = newword.hide(secword);
-        Console.WriteLine(string.Join(' ', scrip._wordList));
-        // word1.ToString();
-        // string converted = newword.hide(word1);
-        // newword.hide(word1);
-        // word1 = 
+        extractIndexFromScrip();
+        // Word newword =new Word();
+        // int word1 = extractIndexFromScrip();
+        // int word2 = extractIndexFromScrip();
+        // int word3 = extractIndexFromScrip();
+        // string firstword = _wordList[word1];
+        // string converted = _wordList[word1] = newword.hide(firstword);
+        // string secword = _wordList[word2];
+        // string secconverted = _wordList[word2] = newword.hide(secword);
+        // string trword = _wordList[word3];
+        // string trconverted = _wordList[word3] = newword.hide(trword);
     }
-    // public void RenderedText(){
-    //     Scripture scrip = new Scripture(_scripture);
-    //     scrip.HideWord();
-    //     Console.WriteLine($"{_reference} {_wordList}.");
-    //     Console.WriteLine("Press enter to continue or type quit to finish");
-    // }
+    public void RenderedText(){
+        // Console.Clear();
+        Console.WriteLine($"rend{_reference} {string.Join(" ",_wordList)}.");
+        Console.WriteLine("Press enter to continue or type quit to finish");
+    }
+    public void DisplayComplScrip(){
+        Console.WriteLine($"dis{_reference} {_scripture}.");
+        Console.WriteLine("Press enter to continue or type quit to finish");
+    }
     public void SetfinalRefer(string reference){
         _reference = reference;
-            }
-} 
+        }
+}
+

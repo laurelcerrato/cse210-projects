@@ -2,36 +2,29 @@ using System;
 public class Word
 {
     private string _word;
-    private string _convertedWord;
-    public List<string> _hiddenWords;
+    public List<int> _hiddenWords;
     public Word(){
 
     }
-    // public Word(string word){
-    //     Scripture exword = new Scripture();
-    //     _word = exword.extractWordFromScrip();
-    //     returnedword();
-    // }
-    // public string  returnedword(){
-    //     hide(_word);
-    //     return _convertedWord;
-    
-    // public string GetWord(string word){
-    //     _word = returnedword(word)
-    // }
-    public string hide(string word){
-            var str = word;
+    public Word(string word){
+        _word = word;
+    }
+    public void extractWord(Scripture scrip){
+        int word1 = scrip.extractIndexFromScrip();
+        int word2 = scrip.extractIndexFromScrip();
+        int word3 = scrip.extractIndexFromScrip();
+        _hiddenWords.Add(word1);
+        _hiddenWords.Add(word2);
+        _hiddenWords.Add(word3);
+    }
+    public void hide(string word){
+            string w = word;
             int length = word.Length;
             string undersc = new String('_', length);
-            return undersc;
-            // foreach(char letter in word){
-            //     string stringedlet = Char.ToString(letter);
-            //     string replacement = "_";
-            //     char converted = char.Parse(replacement);
-            //     _convertedWord = stringedlet.Replace(letter,converted);
-            //     Console.Write(_convertedWord);
-            // }
-
+            Console.Write(undersc);
+    }
+    public void Show(){
+        Console.Write(_word);
     }
 }
 

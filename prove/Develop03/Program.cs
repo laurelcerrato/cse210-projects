@@ -4,18 +4,20 @@ class Program
 {
     static void Main(string[] args)
     {
-        string answer = "a";
+        string answer = " ";
         //Get The reference using the reference class, then setting the final reference value to the scripture class "_reference" attribute
             Reference reference = new Reference();
             string refer = reference.GetMultVReference();
             Scripture scrip =new Scripture();
             scrip.SetfinalRefer(refer);
-            // scrip.RenderedText();
-        while(answer != "quit"){
-            answer = Console.ReadLine();
+            // Word w =new Word();
             Console.Clear();
+            scrip.DisplayComplScrip();
+        while( answer!= "quit"){
+            answer = Console.ReadLine();
+            scrip.extractIndexFromScrip();
             scrip.HideWord();
-            // scrip.RenderedText();
+            scrip.RenderedText();
             // Word w =new Word();
             //     w.setWord();
             
