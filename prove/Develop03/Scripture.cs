@@ -1,4 +1,5 @@
 using System;
+using Microsoft.VisualBasic.FileIO;
 public class Scripture
 {  
     private string _scripture = "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life";
@@ -23,11 +24,16 @@ public class Scripture
         int index2 =extractIndexFromScrip();
         int index3 =extractIndexFromScrip();
         if (_hiddenWords.Contains(index) || _hiddenWords.Contains(index2) ||  _hiddenWords.Contains(index3)){
-        if(_hiddenWords.Count < _wordList.Length){
+        if(_hiddenWords.Count< _wordList.Length+1){
             setwords();
             }else{
-                Console.WriteLine("Well Done!");
-                Console.WriteLine($"The complete scripture was:\n{_reference} {_scripture}.");
+                //---CREATIVITY---
+                Console.WriteLine("Well Done!\nTo verify you have succcesfully memorized the scripture please write it: ");
+                string scripture = Console.ReadLine();
+                if (scripture.ToLower() == _scripture.ToLower()){
+                    Console.WriteLine("Perfect! You succesfully memorized the scripture.");
+                }else{
+                Console.WriteLine($"That is wrong :(\nThe complete scripture was:\n{_reference} {_scripture}.");}
                 System.Environment.Exit(1);
             }
         }
