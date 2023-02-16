@@ -24,7 +24,7 @@ public class Scripture
         int index2 =extractIndexFromScrip();
         int index3 =extractIndexFromScrip();
         if (_hiddenWords.Contains(index) || _hiddenWords.Contains(index2) ||  _hiddenWords.Contains(index3)){
-        if(_hiddenWords.Count< _wordList.Length+1){
+        if(_hiddenWords.Count < _wordList.Length){
             setwords();
             }else{
                 //---CREATIVITY---
