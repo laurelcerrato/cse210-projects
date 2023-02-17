@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 public class Journal{
     public string _featureSelection = "0";
-    
+    public int _writinginTheJournal = 0;
 
     public void Display()
     {
