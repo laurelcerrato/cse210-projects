@@ -10,8 +10,10 @@ public class Breathing: Activity{
         DateTime futureTime = startTime.AddSeconds(_seconds);
         Console.Clear();
         while (DateTime.Now < futureTime) {
-            Console.Write($"\n\n{_breath1}"); base.Countdown();
-            Console.Write($"\n\n{_breath2}");base.Countdown();
+            Console.Write($"\n\n{_breath1}");
+            base.Countdown();
+            Console.Write($"\n\n{_breath2}");
+            base.Countdown();
         }
     }
 }

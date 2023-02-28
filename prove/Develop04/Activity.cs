@@ -45,7 +45,7 @@ public class Activity{
         _animation.Add("-");
         _animation.Add("\\");
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(6);
+        DateTime endTime = startTime.AddSeconds(5);
         int i = 0;
         while(DateTime.Now < endTime){
                     string a = _animation[i];
@@ -58,6 +58,12 @@ public class Activity{
                     }
                 
         }
+    }
+    public string Random(List<string> activitylist){
+        Random randomstring = new Random();
+        int randIndex = randomstring.Next(activitylist.Count);
+        string random = activitylist[randIndex];
+        return random;
     }
     public int GetSeconds(){
         return _seconds;
