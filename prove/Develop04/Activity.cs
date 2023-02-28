@@ -8,7 +8,7 @@ public class Activity{
     }
     public Activity (string name, string descrip){
         _activityName = name;
-        _activityDescription=descrip ;
+        _activityDescription = descrip ;
     }
     public void DisplayStart(){
         Console.Clear();
@@ -21,17 +21,18 @@ public class Activity{
         Spinner();
     }
     public void DisplayEnd(){
-        Console.WriteLine("Well done!! \n");
+        Console.WriteLine("\nWell done!! \n");
         Console.WriteLine($"You have completed another {_seconds} seconds of the {_activityName} activity.");
         Thread.Sleep(5000);
         Console.Clear();
         
     }
     public void Countdown(){
-        for (int a = 5; a >= 0; a--)
+        for (int a = 5; a > 0; a--)
         {
-            Console.WriteLine("\rYou may begin in: {0}", a);
+            Console.Write(a);
             System.Threading.Thread.Sleep(1000);
+            Console.Write("\b \b");
         } 
     }
     public void Spinner(){
