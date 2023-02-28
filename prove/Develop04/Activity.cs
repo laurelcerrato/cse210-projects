@@ -2,24 +2,29 @@ public class Activity{
     protected int _seconds;
     private string _activityName;
     private string _activityDescription;
+    private  List<string> _animation = new List<string>();
     public Activity(){
 
     }
-    public Activity (string activityname, string activitydescrip){
-        activityname = _activityName;
-        activitydescrip = _activityDescription;
+    public Activity (string name, string descrip){
+        _activityName = name;
+        _activityDescription=descrip ;
     }
     public void DisplayStart(){
+        Console.Clear();
         Console.WriteLine($"Welcome to the {_activityName} activity");
-        Console.WriteLine($"{_activityDescription}");
-        Console.Write("How long, in seconds, would you like for your session? ");
+        Console.WriteLine($"\n{_activityDescription}");
+        Console.Write("\nHow long, in seconds, would you like for your session? ");
         _seconds = int.Parse(Console.ReadLine());
         Console.Clear();
         Console.WriteLine("Get ready ...");
+        Spinner();
     }
     public void DisplayEnd(){
         Console.WriteLine("Well done!! \n");
-        Console.WriteLine($"You have completed another {_seconds} of the {_activityName}.");
+        Console.WriteLine($"You have completed another {_seconds} seconds of the {_activityName} activity.");
+        Thread.Sleep(5000);
+        Console.Clear();
         
     }
     public void Countdown(){
@@ -30,16 +35,30 @@ public class Activity{
         } 
     }
     public void Spinner(){
-        while(true){
-                Console.Write("/");
-                Console.SetCursorPosition(Console.CursorLeft -1,Console.CursorTop);
-                System.Threading.Thread.Sleep(200);
-                Console.Write("\\");
-                Console.SetCursorPosition(Console.CursorLeft -1,Console.CursorTop);
-                System.Threading.Thread.Sleep(200);
-                Console.Write("|");
-                Console.SetCursorPosition(Console.CursorLeft -1,Console.CursorTop);
-                System.Threading.Thread.Sleep(200);
-                }
+        _animation.Add("|");
+        _animation.Add("/");
+        _animation.Add("-");
+        _animation.Add("\\");
+        _animation.Add("|");
+        _animation.Add("/");
+        _animation.Add("-");
+        _animation.Add("\\");
+        DateTime startTime = DateTime.Now;
+        DateTime endTime = startTime.AddSeconds(6);
+        int i = 0;
+        while(DateTime.Now < endTime){
+                    string a = _animation[i];
+                    Console.Write(a);
+                    Thread.Sleep(400);
+                    Console.Write("\b \b");
+                    i++;
+                    if(i >= _animation.Count){
+                        i = 0;
+                    }
+                
+        }
+    }
+    public int GetSeconds(){
+        return _seconds;
     }
 }
