@@ -5,8 +5,8 @@ class Program
     static void Main(string[] args)
     {   Console.Clear();
         string choice = "";
-        while (choice != "4"){
-            Console.WriteLine("Menu Options:\n1. Start breathing activity\n2. Start reflecting activity\n3. Start listing activity\n4. Quit");
+        while (choice != "5"){
+            Console.WriteLine("Menu Options:\n1. Start breathing activity\n2. Start reflecting activity\n3. Start listing activity\n4. Start Real World Problem Activity\n5. Quit");
             Console.Write("Select a choice from the menu: ");
             choice = Console.ReadLine();
             if (choice == "1"){
@@ -24,6 +24,11 @@ class Program
                 Listing listing = new Listing("Listing","This activity will help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
                 listing.DisplayStart();
                 listing.DisplayListing();
+                listing.DisplayEnd();
+        }   else if(choice == "4"){
+            Problem listing = new Problem("Real World Problem","This activity will help you reflect on a real world problem and write about it.");
+                listing.DisplayStart();
+                listing.DisplayProblem();
                 listing.DisplayEnd();
         }
     }
