@@ -1,7 +1,8 @@
 using System;
 
 class Program
-{
+{//For creativity I added another activity called Real world Problem activity 
+//that displays a random problem and asks to reflect and write about it
     static void Main(string[] args)
     {   Console.Clear();
         string choice = "";
@@ -26,6 +27,7 @@ class Program
                 listing.DisplayListing();
                 listing.DisplayEnd();
         }   else if(choice == "4"){
+            //CREATIVITY
             Problem listing = new Problem("Real World Problem","This activity will help you reflect on a real world problem and write about it.");
                 listing.DisplayStart();
                 listing.DisplayProblem();
