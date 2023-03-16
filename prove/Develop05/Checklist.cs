@@ -11,8 +11,29 @@ public class Checklist: Goal{
         _bonusPoints = int.Parse(Console.ReadLine());
         
     }
-    public override string OrganizedGoal()
+    public int GetTimescompleted(){
+        return _timesCompleted;
+    }
+    public int GetTimestocomplete(){
+        return _timestoComplete;
+    }
+    public int Getbonuspoints(){
+        return _bonusPoints;
+    }
+    public void SetTimescompleted(int timescompleted){
+        _timesCompleted = timescompleted;
+    }
+    public void SetTimestocomplete(int timestocomplete){
+        _timestoComplete = timestocomplete;
+    }
+    public void Setbonuspoints(int bonus){
+        _bonusPoints = bonus;
+    }
+    public override string listGoal()
     {
         return  $"{_name} ({_description}) -- Currently Completed = {_timesCompleted}/{_timestoComplete}";
+    }
+    public override string fileGoal(){
+        return $"Checklist,{_name},{_description},{_goalPoints},{_bonusPoints},{_timestoComplete},{_timesCompleted}";
     }
 }
