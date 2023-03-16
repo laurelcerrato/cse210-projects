@@ -3,4 +3,5 @@ public class Eternal: Goal{
         base.GoalInfo();
     }
     
+    
 }

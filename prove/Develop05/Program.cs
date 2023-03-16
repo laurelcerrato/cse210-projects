@@ -19,24 +19,33 @@ class Program
             chosen = Console.ReadLine();
 
             if (chosen == "1"){
-                Console.WriteLine("The types of goals are:\n1. Simple Goal\n2. Eternal Goal\n3. Checklist Goal\nWhich type of goal would you like to create? ");
+                Console.Write("The types of goals are:\n1. Simple Goal\n2. Eternal Goal\n3. Checklist Goal\nWhich type of goal would you like to create? ");
                 typeofgoal = int.Parse(Console.ReadLine());
                 if(typeofgoal == 1){
                     Simple simplegoal = new Simple();
                     simplegoal.CreateSimpleGoal();
+                    _goals.Add(simplegoal.OrganizedGoal());
                 }
                 else if(typeofgoal == 2){
                     Eternal eternalgoal = new Eternal();
                     eternalgoal.CreateEternalGoal();
+                    _goals.Add(eternalgoal.OrganizedGoal());
                 }
                 else if(typeofgoal == 3){
                     Checklist checklistgoal = new Checklist();
                     checklistgoal.GoalInfo();
+                    _goals.Add(checklistgoal.OrganizedGoal());
                 }
                 
             }
             else if(chosen == "2"){
-                goal.ListGoals();
+                int count = 1;
+                Console.WriteLine("The goals are: ");
+                foreach( string goalItem in _goals)
+                {
+                    Console.WriteLine($"[ ] {count}. {goalItem}");
+                    count ++;
+                }
             }
         }
     }
