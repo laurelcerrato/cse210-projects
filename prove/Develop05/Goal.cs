@@ -4,8 +4,11 @@ public class Goal{
     protected string _name;
     protected string _description;
     protected int _goalPoints;
-    protected bool _isCompleted;
-
+    protected bool _isCompleted = false;
+    public virtual bool SetCompleted(){
+        _isCompleted = true;
+        return _isCompleted;
+    }
     public int GetScore(){
         return _points;
     }
@@ -38,10 +41,22 @@ public class Goal{
         Console.Write("What is the ammount of points associated with the goal? ");
         _goalPoints = int.Parse(Console.ReadLine());
     }
-    public virtual string listGoal(){
-        return  $"{_name} ({_description})";
+    public virtual string GetGoal()
+    {
+        string goalText = $"[ ] {_name} ({_description})";
+
+        if(_isCompleted == true)
+        {
+            goalText = $"[X] {_name} ({_description})";
+            _goalPoints = 0;
+        }
+
+        return goalText;
     }
     public virtual string fileGoal(){
         return "";
+    }
+    public virtual void CompletedGoal(int points){
+
     }
 }

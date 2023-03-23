@@ -29,11 +29,26 @@ public class Checklist: Goal{
     public void Setbonuspoints(int bonus){
         _bonusPoints = bonus;
     }
-    public override string listGoal()
-    {
-        return  $"{_name} ({_description}) -- Currently Completed = {_timesCompleted}/{_timestoComplete}";
+    public override string GetGoal()
+    {   string goalText = $"[ ] {_name} ({_description}) -- Currently Completed = {_timesCompleted}/{_timestoComplete}";
+
+        if(_isCompleted == true)
+        {
+            goalText = $"[X] {_name} ({_description}) -- Currently Completed = {_timesCompleted}/{_timestoComplete}";
+            _goalPoints = 0;
+        }
+
+        return goalText;
     }
     public override string fileGoal(){
         return $"Checklist,{_name},{_description},{_goalPoints},{_bonusPoints},{_timestoComplete},{_timesCompleted}";
+    }
+    public override bool SetCompleted(){
+        _timesCompleted++;
+        if (_timesCompleted == _timestoComplete){
+            _isCompleted = true;
+        }
+    
+        return _isCompleted;
     }
 }

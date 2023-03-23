@@ -10,7 +10,7 @@ class Program
         Goal goal = new Goal();
         int points = goal.GetScore();
         int typeofgoal = goal.GetGoaltype();
-        List<string> _goals = new List<string>();
+        List<Goal> _goals = new List<Goal>();
         List<string> _filegoals = new List<string>();
 
         string chosen = "";
@@ -27,19 +27,19 @@ class Program
                 if(typeofgoal == 1){
                     Simple simplegoal = new Simple();
                     simplegoal.CreateSimpleGoal();
-                    _goals.Add(simplegoal.listGoal());
+                    _goals.Add(simplegoal);
                     _filegoals.Add(simplegoal.fileGoal());
                 }
                 else if(typeofgoal == 2){
                     Eternal eternalgoal = new Eternal();
                     eternalgoal.CreateEternalGoal();
-                    _goals.Add(eternalgoal.listGoal());
+                    _goals.Add(eternalgoal);
                     _filegoals.Add(eternalgoal.fileGoal());
                 }
                 else if(typeofgoal == 3){
                     Checklist checklistgoal = new Checklist();
                     checklistgoal.GoalInfo();
-                    _goals.Add(checklistgoal.listGoal());
+                    _goals.Add(checklistgoal);
                     _filegoals.Add(checklistgoal.fileGoal());
                 }
                 
@@ -47,9 +47,10 @@ class Program
             else if(chosen == "2"){
                 int count = 1;
                 Console.WriteLine("The goals are: ");
-                foreach( string goalItem in _goals)
+                foreach( Goal goalItem in _goals)
                 {
-                    Console.WriteLine($"[ ] {count}. {goalItem}");
+                    string goalText = goalItem.GetGoal();
+                    Console.WriteLine($"{count}. {goalText}");
                     count ++;
                 }
             }
@@ -59,10 +60,10 @@ class Program
 
                 using (StreamWriter outputFile = new StreamWriter(fileName))
                 {
-                    // You can add text to the file with the WriteLine method
                     outputFile.WriteLine(points);
-                    foreach(string goalItem in _filegoals){
-                        outputFile.WriteLine(goalItem );
+                    foreach(Goal goalItem in _goals){
+                        string goalText = goalItem.fileGoal();
+                        outputFile.WriteLine(goalText);
                     }
             }
             }
@@ -84,7 +85,8 @@ class Program
                         simplefile.SetName(goalname);
                         simplefile.SetDescription(goaldescrip);
                         simplefile.SetGoalPoints(goalpoints);
-                        _goals.Add(simplefile.listGoal());
+                        simplefile.SetCompleted();
+                        _goals.Add(simplefile);
 
                     }
                     else if(goaltype == "Eternal"){
@@ -92,21 +94,38 @@ class Program
                         eternalfile.SetName(goalname);
                         eternalfile.SetDescription(goaldescrip);
                         eternalfile.SetGoalPoints(goalpoints);
-                        _goals.Add(eternalfile.listGoal());
+                        eternalfile.SetCompleted();
+                        _goals.Add(eternalfile);
 
                     }
                     else if(goaltype == "Checklist"){
-                        int timestocom = int.Parse(parts[4]);
-                        int timescompleted = int.Parse(parts[5]);
-                        int bonus = int.Parse(parts[6]);
+                        int timestocom = int.Parse(parts[5]);
+                        int timescompleted = int.Parse(parts[6]);
+                        int bonus = int.Parse(parts[4]);
                         Checklist checklistfile = new Checklist();
                         checklistfile.SetName(goalname);
                         checklistfile.SetDescription(goaldescrip);
                         checklistfile.SetGoalPoints(goalpoints);
                         checklistfile.Setbonuspoints(bonus);
-                        _goals.Add(checklistfile.listGoal());
+                        checklistfile.SetTimescompleted(timescompleted);
+                        checklistfile.SetTimestocomplete(timestocom);
+                        checklistfile.SetCompleted();
+                        _goals.Add(checklistfile);
                     }
                 }
+            }
+            else if (chosen == "5"){
+                int count = 1;
+                Console.WriteLine("The goals are: ");
+                foreach( Goal goalItem in _goals)
+                {
+                    Console.WriteLine($"{count}. {goalItem.GetName()}");
+                    count ++;
+                }
+                Console.Write("Which goal did you accomplished? ");
+                int accomplishedgoal = int.Parse(Console.ReadLine());
+                int goalIndex = accomplishedgoal-1;
+                Console.WriteLine(_goals[goalIndex].SetCompleted());
             }
         }
     }
