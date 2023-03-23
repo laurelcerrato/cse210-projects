@@ -15,9 +15,9 @@ class Program
 
         string chosen = "";
 
-        while(chosen != "6"){
+        while(chosen != "7"){
             Console.WriteLine($"Your score is : {points}\n");
-            Console.WriteLine($"Menu options:\n1. Create New Goal\n2. List Goals\n3. Save Goals\n4. Load Goals\n5. Record Event\n6. Quit");
+            Console.WriteLine($"Menu options:\n1. Create New Goal\n2. List Goals\n3. Save Goals\n4. Load Goals\n5. Record Event\n6. Erase Goals\n7. Quit");
             Console.Write("Select a choice from the Menu: ");
             chosen = Console.ReadLine();
 
@@ -60,7 +60,7 @@ class Program
 
                 using (StreamWriter outputFile = new StreamWriter(fileName))
                 {
-                    outputFile.WriteLine(points);
+                    outputFile.WriteLine($"{points}:");
                     foreach(Goal goalItem in _goals){
                         string goalText = goalItem.fileGoal();
                         outputFile.WriteLine(goalText);
@@ -71,10 +71,12 @@ class Program
                 Console.Write("Please write the file name from were you want to load the goals: ");
                 string loadFile = Console.ReadLine();
                 string[] lines = System.IO.File.ReadAllLines(loadFile);
+
                 lines = lines.Skip(1).ToArray();
 
                 foreach (string line in lines)
-                {
+                { 
+                    
                     string[] parts = line.Split(",");
                     string goaltype = parts[0];
                     string goalname = parts[1];
@@ -94,7 +96,6 @@ class Program
                         eternalfile.SetName(goalname);
                         eternalfile.SetDescription(goaldescrip);
                         eternalfile.SetGoalPoints(goalpoints);
-                        eternalfile.SetCompleted();
                         _goals.Add(eternalfile);
 
                     }
@@ -125,7 +126,21 @@ class Program
                 Console.Write("Which goal did you accomplished? ");
                 int accomplishedgoal = int.Parse(Console.ReadLine());
                 int goalIndex = accomplishedgoal-1;
-                Console.WriteLine(_goals[goalIndex].SetCompleted());
+                _goals[goalIndex].SetCompleted();
+                int accomplishedgoalpoints = _goals[goalIndex].GetGoalPoints();
+                Console.WriteLine($"Congratulations! you have earned {accomplishedgoalpoints} points.");
+                points = accomplishedgoalpoints + points;
+                Console.WriteLine($"You now have {points} points");
+            }
+            //For creativity I added an option that erases the goals when they are all finished.
+            else if (chosen == "6"){
+                _goals.Clear();
+                Console.Write("What is the name of the filename that haves the goals? ");
+                string fileName = Console.ReadLine();
+                using (FileStream fs = new FileStream(fileName, FileMode.Open)) {
+                    fs.SetLength(0);
+        }
+
             }
         }
     }

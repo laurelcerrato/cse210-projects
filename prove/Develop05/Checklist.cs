@@ -46,6 +46,7 @@ public class Checklist: Goal{
     public override bool SetCompleted(){
         _timesCompleted++;
         if (_timesCompleted == _timestoComplete){
+            _goalPoints = _goalPoints + _bonusPoints;
             _isCompleted = true;
         }
     

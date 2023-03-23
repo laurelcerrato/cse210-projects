@@ -1,2 +1,2 @@
-0
-Simple,simple goal,simple goal example,200
+200
+Simple,simple goal,simple goal ex,200

@@ -12,6 +12,9 @@ public class Goal{
     public int GetScore(){
         return _points;
     }
+    public int SetScore(int points){
+        return _points = points;
+    }
     public int GetGoaltype(){
         return _typeofGoal;
     }
