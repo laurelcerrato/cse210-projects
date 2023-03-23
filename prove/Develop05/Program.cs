@@ -60,7 +60,7 @@ class Program
 
                 using (StreamWriter outputFile = new StreamWriter(fileName))
                 {
-                    outputFile.WriteLine($"{points}:");
+                    outputFile.WriteLine(points);
                     foreach(Goal goalItem in _goals){
                         string goalText = goalItem.fileGoal();
                         outputFile.WriteLine(goalText);
@@ -68,34 +68,30 @@ class Program
             }
             }
             else if(chosen == "4"){
-                Console.Write("Please write the file name from were you want to load the goals: ");
-                string loadFile = Console.ReadLine();
-                string[] lines = System.IO.File.ReadAllLines(loadFile);
-
-                lines = lines.Skip(1).ToArray();
+                Console.Write($"What is the filename for the goal file? ");
+                string fileName = Console.ReadLine();
+                string[] lines = System.IO.File.ReadAllLines(fileName);
 
                 foreach (string line in lines)
-                { 
-                    
+                {
                     string[] parts = line.Split(",");
+
                     string goaltype = parts[0];
-                    string goalname = parts[1];
-                    string goaldescrip = parts[2];
-                    int goalpoints = int.Parse(parts[3]);
+
                     if(goaltype == "Simple"){
                         Simple simplefile = new Simple();
-                        simplefile.SetName(goalname);
-                        simplefile.SetDescription(goaldescrip);
-                        simplefile.SetGoalPoints(goalpoints);
+                        simplefile.SetName(parts[1]);
+                        simplefile.SetDescription(parts[2]);
+                        simplefile.SetGoalPoints(int.Parse(parts[3]));
                         simplefile.SetCompleted();
                         _goals.Add(simplefile);
 
                     }
                     else if(goaltype == "Eternal"){
                         Eternal eternalfile = new Eternal();
-                        eternalfile.SetName(goalname);
-                        eternalfile.SetDescription(goaldescrip);
-                        eternalfile.SetGoalPoints(goalpoints);
+                        eternalfile.SetName(parts[1]);
+                        eternalfile.SetDescription(parts[2]);
+                        eternalfile.SetGoalPoints(int.Parse(parts[3]));
                         _goals.Add(eternalfile);
 
                     }
@@ -104,15 +100,18 @@ class Program
                         int timescompleted = int.Parse(parts[6]);
                         int bonus = int.Parse(parts[4]);
                         Checklist checklistfile = new Checklist();
-                        checklistfile.SetName(goalname);
-                        checklistfile.SetDescription(goaldescrip);
-                        checklistfile.SetGoalPoints(goalpoints);
+                        checklistfile.SetName(parts[1]);
+                        checklistfile.SetDescription(parts[2]);
+                        checklistfile.SetGoalPoints(int.Parse(parts[3]));
                         checklistfile.Setbonuspoints(bonus);
                         checklistfile.SetTimescompleted(timescompleted);
                         checklistfile.SetTimestocomplete(timestocom);
                         checklistfile.SetCompleted();
                         _goals.Add(checklistfile);
                     }
+                else{
+                    points = goal.SetScore(int.Parse(parts[0]));
+                    } 
                 }
             }
             else if (chosen == "5"){
