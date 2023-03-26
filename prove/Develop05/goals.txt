@@ -1,4 +1,2 @@
-5800
-Simple,Read,Read everyday for 1 week,0
-Eternal,read ,read everyday,300
-Checklist,write a book,write a book about pets,0,2000,3,3
+2
+Simple,asasa,asasa,0
