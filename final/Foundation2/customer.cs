@@ -4,10 +4,10 @@ public class Customer{
     public Customer(string name){
         _customername = name;
     }
-    public bool LiveinUsa(){
-        return false;
+    public bool LiveinUsa(Address adr){
+        return adr.UsaOrnot();
     }
     public void SetAddress(Address address){
-        
+        _address = address;
     }
 }

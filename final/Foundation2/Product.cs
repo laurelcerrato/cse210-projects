@@ -10,7 +10,7 @@ public class Product{
         _quantity = quantity;
     }
     public int CalculatePrice(){
-
+        return _price * _quantity;
     }
     public string GetProductName(){
         return _productname;

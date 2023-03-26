@@ -12,6 +12,7 @@ public class Video{
         int commentsamount = Amount(_comments);
         Console.WriteLine($"\nVideo title: {_title}, Author: {_author}, {_lenght} minutes, Number Of Comments: {commentsamount}");
         foreach(Comment comment in _comments){
+            Console.WriteLine("Comments:");
             Console.WriteLine(comment.ReturnComment());
         }
     }
