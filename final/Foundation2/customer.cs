@@ -10,4 +10,7 @@ public class Customer{
     public void SetAddress(Address address){
         _address = address;
     }
+    public string GetCustomername(){
+        return _customername;
+    }
 }
