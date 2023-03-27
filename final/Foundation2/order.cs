@@ -1,19 +1,26 @@
 public class Order{
-    private Customer _costumer;
+    private Customer _customer;
     private List<Product> _products = new List<Product>();
     private List<int> prices = new List<int>();
     private int _total;
     private int _usshipping = 5;
     private int _notus = 35;
-
-    public void TotalCost(bool usaornot, List<Product> list )
+    private bool _usaornot;
+    
+    public void SetList(List<Product> list){
+        _products = list;
+    }
+    public void SetUsaornot(bool usaornot){
+        _usaornot = usaornot;
+    }
+    public void TotalCost()
     {
 
-        foreach (Product product in list){
+        foreach (Product product in _products){
             int price = product.CalculatePrice();
             prices.Add(price);}
             
-            if(usaornot == true){
+            if(_usaornot == true){
                 _total = prices.Sum() + _usshipping;
             }else{
                 _total = prices.Sum() + _notus;
@@ -32,17 +39,13 @@ public class Order{
         int id = product.GetProductId();
         return $"{name} - {id}";
     }
-    public string ShippingLabel(string name, string address){
-        return $"{name}, {address}, Total: {_total}";
+    public void SetCustomer(Customer customer){
+        _customer = customer;
+    }
+    public string ShippingLabel(){
+        return $"{_customer.GetCustomername()}, {_customer.GetAdrress()}, Total: {_total}";
     }
     public List<Product> GetList(){
         return _products;
     }
-    public int ForeachLoop(int[] sourceArray)
-{
-    var result = 0;
-    foreach (var item in sourceArray)
-        result += item;
-    return result;
-}
 }

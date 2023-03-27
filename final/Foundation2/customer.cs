@@ -13,4 +13,7 @@ public class Customer{
     public string GetCustomername(){
         return _customername;
     }
+    public string GetAdrress(){
+        return _address.AddresInfo();
+    }
 }
