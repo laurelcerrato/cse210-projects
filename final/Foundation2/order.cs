@@ -13,12 +13,12 @@ public class Order{
         
     }
     public void PackingLabel(){
-        return $""
-    }
-    public string ShippingLabel(){
 
     }
+    public string ShippingLabel(){
+        return "";
+    }
     public string SetCostumer(string costumer){
-        
+        return ";";
     }
 }

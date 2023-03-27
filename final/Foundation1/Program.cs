@@ -43,7 +43,7 @@ class Program
         comment3._commentext = "Good tutorial";
 
         comment4._name = "Ruben";
-        comment4._commentext = "What soup are you using?";
+        comment4._commentext = "What soap are you using?";
 
         comment5._name = "Jose";
         comment5._commentext = "That must smell very good!";
