@@ -3,9 +3,6 @@ public class Address{
     private string _city;
     private string _state;
 
-    public Address(){
-        
-    }
     public Address(string street, string city, string state){
         _street = street;
         _city = city;
