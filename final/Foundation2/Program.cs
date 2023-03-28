@@ -52,7 +52,7 @@ class Program
             Console.WriteLine();
             Console.WriteLine("Shipping Label: ");
             Console.WriteLine(order.ShippingLabel());
-            Console.WriteLine("Packing Label: ");
+            Console.WriteLine("\nPacking Label: ");
             foreach(Product product in order.GetList()){
             Console.WriteLine(order.PackingLabel(product));
         }

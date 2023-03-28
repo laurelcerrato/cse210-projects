@@ -1,0 +1,11 @@
+public class Outdoor:Event{
+    private string _weather;
+    public Outdoor(string title, string description, string date, string time, Address address, string type,string weather):base(title,description,date,time,address,type){
+        _weather = weather;
+    }
+    public override void FullDetails()
+    {
+        base.FullDetails();
+        Console.WriteLine($"Weather: {_weather}");
+    }
+}

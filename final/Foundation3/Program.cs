@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Foundation3 World!");
+        Console.WriteLine("Welcome to the Planning Event Program");
+        List<Event> events = new List<Event>();
     }
 }
