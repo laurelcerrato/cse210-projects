@@ -5,12 +5,17 @@ public class Swimming:Activity{
         _laps = laps;
     }
     public override float CalcDistance(){
-        return 1;
+        return _laps * 50 / 1000;
     }
+
+    
     public override float CalcSpeed(){
-        return 1;
+        return (CalcDistance()/ base.Getmin()) * 60;
     }
     public override float CalcPace(){
-        return 1;
+        return base.Getmin()/ CalcDistance();
+    }
+    public override string Summary(){
+        return $"{base.GetDate()} {base.Getact()}({base.Getmin()}min)-Distance {CalcDistance()} km, Speed {CalcSpeed()} kph, Pace: {CalcPace()} per km";
     }
 }

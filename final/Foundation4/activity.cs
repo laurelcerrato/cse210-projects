@@ -6,6 +6,16 @@ public class Activity{
     public Activity(string date, float minutes, string activity){
         _date = date;
         _minutes = minutes;
+        _activity = activity;
+    }
+    public string GetDate(){
+        return _date;
+    }
+    public float Getmin(){
+        return _minutes;
+    }
+    public string Getact(){
+        return _activity;
     }
 
 
@@ -18,7 +28,7 @@ public class Activity{
     public virtual float CalcPace(){
         return 1;
     }
-    public string Summary(){
+    public virtual string Summary(){
         return $"";
     }
 }
