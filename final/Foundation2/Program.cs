@@ -8,7 +8,12 @@ class Program
 
         List<Order> orders = new List<Order>();
         //1
-        Address address1 = new Address("21 Street","San Pedro Sula","Cortes","Honduras");
+        Address address1 = new Address();
+        address1.SetCity("San Pedro Sula");
+        address1.SetStreet("21 Street");
+        address1.SetState("Cortes");
+        address1.SetCountry("Honduras");
+
         Customer customer1 = new Customer("Laurel");
         Product p1 = new Product("Hammer", 09821,100,1);
         Product p2 = new Product("Dress", 12131,10,2);
@@ -24,7 +29,11 @@ class Program
         order1.SetList(order1.GetList());
         order1.SetUsaornot(usaorn1);
         //2
-        Address address2 = new Address("5th Street","Miami","Florida","USA");
+        Address address2 = new Address();
+        address2.SetCity("Miami");
+        address2.SetStreet("5th Street");
+        address2.SetState("Florida");
+        address2.SetCountry("USA");
         Customer customer2 = new Customer("Ashly");
         Product p3 = new Product("Candles", 32312,15,10);
         Product p4 = new Product("Meet", 765231,150,2);

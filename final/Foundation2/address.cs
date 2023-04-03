@@ -3,15 +3,18 @@ public class Address{
     private string _city;
     private string _state;
     private string _country;
-    public Address(){
-        
-    }
-    public Address(string street, string city, string state, string country){
-        _street = street;
-        _city = city;
-        _state = state;
-        _country = country;
 
+    public void SetStreet(string street){
+        _street = street;
+    }
+    public void SetCity(string city){
+        _city = city;
+    }
+    public void SetState(string state){
+        _state = state;
+    }
+    public void SetCountry(string country){
+        _country = country;
     }
     public bool UsaOrnot(){
         if (_country=="USA" ||_country=="UNITED STATES"){
